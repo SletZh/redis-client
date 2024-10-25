@@ -1,0 +1,112 @@
+//一、字符串
+//新增、修改
+SET user:1 "root"
+//判断
+EXISTS user:1
+//删除
+DEL user:1
+//递增
+INCR user:count
+//递增
+INCRBY user:count 10
+//递减
+DECR user:count
+//递减
+DECRBY user:count 10
+//检索过期时间
+TTL user:1
+//设置过期时间，秒
+set user:1 "root" ex 2
+//设置过期时间 毫秒
+set user:1 "root" px 50
+//取消过期时间
+PERSIST user:1
+//检索
+GET user:1
+
+//二、哈希
+//新增、修改
+HSET user:0000 id "0000" usercode "用户0000" comcode "24"
+//检索
+HGET user:0000 id
+//删除
+HDEL user:0000 comcode
+//递增
+HINCRBY user:0000 count 100
+//递减
+HINCRBY user:0000 count -100
+//检索所有属性
+HGETALL user:0000
+//设置过期时间,秒
+hexpire user:0000  10 fields 1 usercode
+//设置过期时间，毫秒
+hpexpire user:0000 50 fields 1 usercode
+//取消过期时间
+hpersist user:0000 fields 1 usercode
+//检索过期时间
+httl user:0000 fields 1 usercode
+
+//三.集合(集合内是字符串)
+//使用场景：栈、队列、生产者消费者模式
+//删除
+DEL user:ids
+//新增
+LPUSH user:ids 1 2 3 4 5
+//队列
+RPOP  user:ids
+//新增
+LPUSH user:ids 6 7 8 9 10
+//栈
+LPOP user:ids
+//取数据
+LRANGE user:ids 0 -1
+//集合长度
+LLEN user:ids
+
+//四、无序集合
+//使用场景：去重、表示关系，执行集合操作（交、并、差）
+//删除
+DEL user:names
+//新增、修改
+SADD user:names "张三" "李四" "王五"
+//删除
+SREM user:names "李四"
+//判断
+SISMEMBER user:names "张三"
+//检索
+SMEMBERS user:names
+//删除
+DEL user:comcodes
+//新增、修改
+SADD user:comcodes "01" "02" "03"
+//并集
+SUNION user:names user:comcodes
+//随机取两条
+SPOP user:names 2
+//随机取两条
+SRANDMEMBER user:comcodes
+//检索
+SMEMBERS user:names
+
+
+//五、有序集合
+//使用场景：限流器、排行榜
+//新增
+ZADD student:score 80 "jack"
+ZADD student:score 60 "tom"
+ZADD student:score 90 "rose"
+//检索
+ZRANGE student:score 0 -1
+//删除
+ZREM student:score "jack"
+//排序
+ZRANGEBYSCORE student:score -inf +inf withscores
+//评分
+ZRANK student:score "rose"
+
+//六、JSON（企业版功能）
+
+
+
+
+

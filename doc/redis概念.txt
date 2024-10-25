@@ -1,0 +1,29 @@
+
+数据类型（区分大小写）：
+Key:
+String:
+List:
+Sets:
+Sorted Sets:
+Hash:
+Server:
+Stream:
+Scripting:
+Geo:
+HyperLogLog:
+
+驱动：
+Lettuce(Singleton-connection sharing for non-blocking commands):
+    在高并发场景中通常表现更好，尤其是在异步或响应式编程模式下，因其非阻塞的特性和对多线程的良好支持。
+    spring-data-redis 2.0.0、springboot 2.0.0 开始正式支持和默认lettuce驱动
+Jedis(Pipelining and Transactions mutually exclusive. Cannot use server/connection commands in pipeline/transactions.):
+    由于采用的是阻塞 I/O，性能在简单的同步场景下可能表现不错，但在高并发环境下性能相对有限，主要依赖于连接池的管理能力。
+
+连接方式：
+独立连接(Standalone Connections):
+主从(Master/Replica Connections):
+哨兵(Redis Sentinel):
+集群(Redis Cluster):
+
+序列化、反序列化：
+默认使用java序列化，不推荐，推荐使用JSON序列化

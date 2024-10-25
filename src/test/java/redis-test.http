@@ -1,0 +1,14 @@
+### 缓存查询
+GET localhost:8182/users/2024
+
+### 缓存查询
+GET localhost:8182/companies/24
+
+### 幂等
+GET localhost:8182/doBusiness/N1
+
+### 限流
+GET localhost:8182/doLimit-fixed/c001
+
+### 限流
+GET localhost:8182/doLimit-sliding/c001
